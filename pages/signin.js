@@ -1,48 +1,36 @@
 
 
-import { useState } from 'react';
 
-import { signIn } from 'next-auth/client'
-import styles from '../styles/Home.module.css'
+import SignInForm from "../components/SignInForm";
+import { providers } from 'next-auth/client';
+import styles from '../styles/Home.module.css';
 
 
-const Signin = () => {
-    const [email, setEmail] = useState('');
-    const handleOnChange = (e) => {
-        const { value } = e.target;
-        setEmail(value);
-    }
+const Signin = ({providers}) => {
+   
 
     return ( <div className={styles["container"]}>
         
       
 
-              <div>
-                <input
-             
-                  type="text"
-                  name="email"
-                  placeholder="Email"
-                  id='email'
-                  onChange={handleOnChange}
-                 
-                  />
            
-              </div>
 
-             
-                <button onClick={() => signIn('email', { email, callbackUrl: '/'} )}>Sign in</button>
-            
-
-
-
-
+        <SignInForm providers={providers}/>
 
 
 
            
       
       </div>  );
+}
+
+Signin.getInitialProps = async (context) => {
+
+  return {
+    
+    providers: await providers(context),
+  
+  }
 }
 
 

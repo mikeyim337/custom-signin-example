@@ -17,6 +17,12 @@ const options = {
         },
         from: process.env.EMAIL_FROM
   }),
+
+   Providers.Facebook({
+      clientId: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+      //state: false
+    }),
    
    
   ],
