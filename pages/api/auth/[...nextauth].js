@@ -33,13 +33,29 @@ const options = {
     signIn: '/signin',
     
   },
+   callbacks: {
+  /**
+   * @param  {object} session      Session object
+   * @param  {object} user         User object    (if using database sessions)
+   *                               JSON Web Token (if not using database sessions)
+   * @return {object}              Session that will be returned to the client 
+   */
+  session: async (session, user, sessionToken) => {
 
+    session.user._id = user.id;
+   
+    
+    return Promise.resolve(session)
+  },
+   
   redirect: async (url, baseUrl) => {
     return url.startsWith(baseUrl)
       ? Promise.resolve(url)
       : Promise.resolve(baseUrl)
   }, 
   
+
+}
 
 }
 

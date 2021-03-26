@@ -9,7 +9,7 @@ const SignInForm = ({providers}) => {
     }
     return (   <> 
     
-           
+           <form>
                 <input
              
                   type="text"
@@ -23,9 +23,12 @@ const SignInForm = ({providers}) => {
           
              
                 <button onClick={() => signIn('email', { email, callbackUrl: '/'} )}>Sign in</button>
-                <button className={styles["facebook100-form-btn"]} onClick={() => signIn('facebook', {callbackUrl: '/'})}>
+                <button onClick={() => signIn('facebook', {callbackUrl: '/'})}>
                 
                   Sign in with {Object.values(providers)[1].name}</button>
+
+
+           </form>
         </>
  );
 }
