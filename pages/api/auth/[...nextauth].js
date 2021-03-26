@@ -20,13 +20,19 @@ const options = {
    
    
   ],
- 
+  database: process.env.DATABASE_URL,
 
 
   pages: {
     signIn: '/signin',
     
   },
+
+  redirect: async (url, baseUrl) => {
+    return url.startsWith(baseUrl)
+      ? Promise.resolve(url)
+      : Promise.resolve(baseUrl)
+  }, 
   
 
 }

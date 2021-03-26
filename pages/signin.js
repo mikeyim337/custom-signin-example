@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 import { signIn } from 'next-auth/client'
-
+import styles from '../styles/Home.module.css'
 
 
 const Signin = () => {
@@ -13,7 +13,7 @@ const Signin = () => {
         setEmail(value);
     }
 
-    return ( <div>
+    return ( <div className={styles["container"]}>
         
       
 
@@ -31,7 +31,7 @@ const Signin = () => {
               </div>
 
              
-                <button onClick={() => signIn('email', { email, callbackUrl: '/' } )}>Sign in</button>
+                <button onClick={() => signIn('email', { email, callbackUrl: '/'} )}>Sign in</button>
             
 
 
